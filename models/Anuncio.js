@@ -10,8 +10,9 @@ const anuncioSchema = mongoose.Schema({
     tags: [String]
 });
 
-anuncioSchema.statics.list = (filtro, callback) => {
+anuncioSchema.statics.list = (filtro, limit, callback) => {
     const query = Anuncio.find(filtro);
+    query.limit(limit);
     query.exec(callback);
 }
 

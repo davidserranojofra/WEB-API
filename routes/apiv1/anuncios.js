@@ -13,8 +13,10 @@ router.get('/', (req, res, next) => {
     const venta = req.query.venta;
     const precio = req.query.precio;
     const tags = req.query.tags;
-    let filtro = {};
 
+    const limit = parseInt(req.query.limit) || null;
+    let filtro = {};
+    
     if(nombre) {
         filtro.nombre = nombre;    
     }
@@ -27,9 +29,9 @@ router.get('/', (req, res, next) => {
     if(tags) {
         filtro.tags = tags;
     }
-
+    
     //muestro los anuncios
-    Anuncio.list(filtro, (err, list) => {
+    Anuncio.list(filtro, limit, (err, list) => {
         if (err) {
             next(err);
             return;
