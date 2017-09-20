@@ -1,0 +1,217 @@
+
+
+const $anuncios = $('#anuncios');
+let ruta = '/apiv1/anuncios'
+let ventaOBusqueda;
+
+//cargar todo los anuncios al inicio
+$(function () {
+    cargaFullAnuncios();
+});
+
+function cargaFullAnuncios() {
+    $.ajax({
+        type: 'GET',
+        url: '/apiv1/anuncios',
+        success: function(traeAnuncios) {
+            let anuncio = traeAnuncios.list;
+             for (let i = 0; i < anuncio.length; i++) {
+
+                if(anuncio[i].venta == true) {
+                    ventaOBusqueda = 'En venta';
+                } else {
+                    ventaOBusqueda = 'Se busca';
+                }
+                $anuncios.append(`
+                                    <div class="container">
+                                        <article class="articulo">
+                                            <div class="informacion">
+                                                <h2>${ventaOBusqueda}</h2>
+                                                <p><b>Nombre:</b> ${anuncio[i].nombre}</p>
+                                                <p><b>Precio:</b> ${anuncio[i].precio} € </p>
+                                                <p><b>Tags:</b> ${anuncio[i].tags}</p>   
+                                            </div>
+                                            <div class="imagen">
+                                                <img src="${anuncio[i].foto}" alt="${anuncio[i].nombre}">
+                                            </div>
+                                        </article>
+                                    </div>
+                                `);
+             }
+        },
+        error: function() {
+            alert('Error al cargar anuncios');
+        }
+    });
+}
+
+//filtra anuncios Get
+$('#filtra-resultados').on('click', function(event) {
+
+    let primerCampo = true;
+    const nombre = document.getElementById("search");
+    const tags = document.getElementById("tags");
+    const venta = document.getElementsByName("venta");
+    let ventaChekeado;
+    const precioMin = document.getElementById("minimo");
+    const precioMax = document.getElementById("maximo");
+
+    //Error de comparacion si minimo es mas grande que maximo
+    if(precioMax.value !== "") {
+        if(precioMax.value < precioMin.value) {
+            alert('Error, lo siento inserta la cantidad mas baja en el minimo');
+            return;
+        }
+    }
+
+    //creo la ruta de busqueda
+    if(nombre.value !== "") {
+            ruta += '?nombre=' + nombre.value;
+            primerCampo = false;
+    } 
+
+    if (tags.value !== "") {
+        if(primerCampo === true) {
+            ruta += '?tags=' + tags.value;
+            primerCampo = false;
+        } else {
+            ruta += '&tags=' + tags.value;
+        }
+    }
+
+    for(let i = 0; i < venta.length; i++) {
+        if(venta[i].checked) {
+            ventaChekeado = venta[i].value;
+        }     
+    }
+
+    if (ventaChekeado !== "") {
+        if(primerCampo === true) {
+            ruta += '?venta=' + ventaChekeado;
+            primerCampo = false;
+        } else {
+            ruta += '&venta=' + ventaChekeado;
+        }
+    }
+
+    if (precioMin.value !== "") {
+        if( precioMax.value === "") {
+            if(primerCampo === true) {
+                ruta += '?precio=' + precioMin.value + '-999999999';
+                primerCampo = false;
+            } else {
+                ruta += '&precio=' + precioMin.value + '-999999999';
+            }
+        } else {
+            if(primerCampo === true) {
+                ruta += '?precio=' + precioMin.value;
+                primerCampo = false;
+            } else {
+                ruta += '&precio=' + precioMin.value;
+            }
+        }
+    }
+
+    if (precioMax.value !== "") {
+        if(primerCampo === true) {
+            ruta += '?precio=0-' + precioMax.value;
+            primerCampo = false;
+        } else {
+            if(precioMin.value !== "") {
+                ruta += '-' + precioMax.value;
+            } else {
+                ruta += '&precio=0-' + precioMax.value;
+            }
+        }
+    }
+
+    pedirAjax(ruta);
+
+    event.preventDefault();
+});
+
+function pedirAjax(url) {
+    $anuncios.empty();
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function(traeAnuncios) {
+            let anuncio = traeAnuncios.list;
+             for (let i = 0; i < anuncio.length; i++) {
+
+                if(anuncio[i].venta == true) {
+                    ventaOBusqueda = 'En venta';
+                } else {
+                    ventaOBusqueda = 'Se busca';
+                }
+                
+                $anuncios.append(`
+                                    <div class="container">
+                                        <article class="articulo">
+                                            <div class="informacion">
+                                                <h2>${ventaOBusqueda}</h2>
+                                                <p><b>Nombre:</b> ${anuncio[i].nombre}</p>
+                                                <p><b>Precio:</b> ${anuncio[i].precio} € </p>
+                                                <p><b>Tags:</b> ${anuncio[i].tags}</p>   
+                                            </div>
+                                            <div class="imagen">
+                                                <img src="${anuncio[i].foto}" alt="${anuncio[i].nombre}">
+                                            </div>
+                                        </article>
+                                    </div>
+                                `);
+             }
+        }
+    });
+    ruta = '/apiv1/anuncios';
+}
+
+
+$('#insertar').on('click', function(event) {
+
+    let nombreA = $('#nombre');
+    
+    let nuevoAnuncio = {
+        nombre: nombreA.val(),
+        foto: $('#foto').val(),
+        tags: $('input:checkbox[name=insert-tags]:checked').val(),
+        venta: $('input:radio[name=insert-venta]:checked').val(),
+        precio: $('#insert-precio').val()
+    };
+    if(nuevoAnuncio.venta === true) {
+        ventaOBusqueda = 'En venta';
+    } else {
+        ventaOBusqueda = 'Se busca';
+    }
+    
+    $.ajax({
+        type: 'POST',
+        url: '/apiv1/anuncios',
+        data: nuevoAnuncio,
+        success: function(nuevoAnuncio) {
+            $anuncios.append(`
+                <div class="container">
+                    <article class="articulo">
+                        <div class="informacion">
+                            <h2>${ventaOBusqueda}</h2>
+                            <p><b>Nombre:</b> ${nuevoAnuncio.nombre}</p>
+                            <p><b>Precio:</b> ${nuevoAnuncio.precio} € </p>
+                            <p><b>Tags:</b> ${nuevoAnuncio.tags}</p>   
+                        </div>
+                        <div class="imagen">
+                            <img src="${nuevoAnuncio.foto}" alt="${nuevoAnuncio.nombre}">
+                        </div>
+                    </article>
+                </div>
+            `)
+        },
+        error: function() {
+            alert('Error al guardar el anuncio');
+        }                    
+    });
+    
+    event.preventDefault();
+});
+
+
+ 

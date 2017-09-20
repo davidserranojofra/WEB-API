@@ -22,8 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/',          require('./routes/index'));
-app.use('/anuncios',  require('./routes/anuncios'));
+app.use('/',               require('./routes/index'));
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios.js'));
 
 // catch 404 and forward to error handler
@@ -35,6 +34,17 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+
+  if (err.array) { // validation error
+    err.status = 422;
+    const errInfo = err.array({ onlyFirstError: true })[0];
+    err.message = isAPI(req) ?
+      { message: 'Not valid', errors: err.mapped()}
+      : `Not valid - ${errInfo.param} ${errInfo.msg}`;
+  }
+
+  res.status(err.status || 500);
+  //si es petición al api respondo json
   if (isAPI(req)) {
     res.json({ok: false, error: err.message});
     return;
@@ -45,7 +55,6 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
   res.render('error');
 });
 

@@ -1,0 +1,73 @@
+<nav class="menu">
+    
+    <form class="filtrado-anuncio" novalidate>
+        <h4>Utiliza los filtros que necesites para encontrar tu producto.</h4>
+        <div class="cajas">
+            <label for="search">Nombre:</label>
+            <input type="search" id="search" name="nombre" class="search">
+        </div>
+        <div class="cajas">
+            <label for="tags">Tags</label>
+            <select name="tags" id="tags">
+                <option value="">---</option>
+                <option value="work">Work</option>
+                <option value="lifestyle">Lifestyle</option>
+                <option value="motor">Motor</option>
+                <option value="mobile">Mobile</option>
+            </select> 
+        </div>
+        <div class="cajas">
+            <input id="ven-bus" type="radio" name="venta" value="" checked>
+            <label for="ven-bus">Venta y Búsqueda</label>
+            <br>
+            <input id="venta" type="radio" name="venta" value="true">
+            <label for="venta">Venta</label>
+            <br>
+            <input id="busqueda" type="radio" name="venta" value="false">
+            <label for="busqueda">Búsqueda</label>
+        </div>
+        <div class="cajas">
+            <p>Precio:</p>
+            <label for="minimo">Mínimo</label>
+            <input type="number" id="minimo" name="precio" class="minimo">€
+            <br>
+            <label for="máximo">Máximo</label>
+            <input type="number" id="maximo" name="precio" class="maximo">€
+            
+        </div>
+        <button id="filtra-resultados">Filtrar</button>
+    </form>
+
+
+    <form class="inserta-anuncio" novalidate>
+        <h4>Inserta un anuncio</h4>
+        <div class="cajas">
+            <label for="nombre">Nombre:</label>
+            <input type="input" id="nombre" name="nombre" class="nombre">
+        </div>
+        <div class="cajas">
+            <label for="foto">Inserta Url:</label>
+            <input type="text" name="foto" id="foto">
+        </div>
+        <div class="cajas">
+            <p>Selecciona categorias</p>
+            <br>
+            <input type="checkbox" name="insert-tags"  value="work"><label for="categoria"> Work</label>   
+            <input type="checkbox" name="insert-tags"  value="lifestyle"><label for="categoria"> Lifestyle</label> 
+            <br> 
+            <input type="checkbox" name="insert-tags"  value="motor"><label for="categoria"> Motor </label> 
+            <input type="checkbox" name="insert-tags"  value="mobile"><label for="categoria"> Mobile </label> 
+        </div>
+        <div class="cajas">
+            <label for="inventa">Venta</label>
+            <input id="inventa" type="radio" name="insert-venta" value="true">
+            <label for="inbusqueda">Búsqueda</label>
+            <input id="inbusqueda" type="radio" name="insert-venta" value="false"> 
+        </div>
+        <div class="cajas">
+            <label for="precio">Precio:</label>
+            <input type="input" id="insert-precio"  class="precio">€
+        </div>
+        <button id="insertar">Insertar</button>
+    </form>
+</nav>

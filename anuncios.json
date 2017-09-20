@@ -1,0 +1,136 @@
+{
+    "list": [
+        {
+            "_id": "59c126736679d357e9a4413a",
+            "nombre": "Despertador",
+            "foto": "https://images-na.ssl-images-amazon.com/images/I/71cymxFptyL._SX355_.jpg",
+            "venta": true,
+            "precio": 5,
+            "__v": 0,
+            "tags": [
+            "work"
+            ]
+        },
+        {
+            "_id": "59c1275410fcc45873b3dacd",
+            "nombre": "Martillo",
+            "foto": "https://images-na.ssl-images-amazon.com/images/I/512KELNIxUL._SX355_.jpg",
+            "venta": true,
+            "precio": 10,
+            "__v": 0,
+            "tags": [
+            "work"
+            ]
+        },
+        {
+            "_id": "59c1280e10fcc45873b3dacf",
+            "nombre": "Muñeco",
+            "foto": "http://dungeonmarvels.com/12449-large_default/muneco-con-sonido-chucky-good-guy-muneco-diabolico-38-cm.jpg",
+            "venta": true,
+            "precio": 35,
+            "__v": 0,
+            "tags": [
+            "lifestyle"
+            ]
+        },
+        {
+            "_id": "59b296de96983110d25741d2",
+            "nombre": "bicicleta",
+            "venta": true,
+            "precio": 48,
+            "foto": "http://bicicletaselectricas365.com/wp-content/gallery/bultaco-brinco/002.jpg",
+            "__v": 0,
+            "tags": [
+            "lifestyle, motor"
+            ]
+        },
+        {
+            "_id": "59c05c8a7e6ec03d56967edb",
+            "nombre": "Linterna",
+            "foto": "http://www.linternasprofesionales.com/WebRoot/StoreES2/Shops/ec7419/555D/F441/2CD5/90A5/6E33/0A02/102F/D8E0/1-1_TM26_OI_m_m.png",
+            "venta": true,
+            "precio": 100,
+            "__v": 0,
+            "tags": [
+            "lifestyle"
+            ]
+        },
+        {
+            "_id": "59c123b0bf0ad1565db41fec",
+            "nombre": "bicicleta",
+            "foto": "http://www.linternasprofesionales.com/WebRoot/StoreES2/Shops/ec7419/555D/F441/2CD5/90A5/6E33/0A02/102F/D8E0/1-1_TM26_OI_m_m.png",
+            "venta": false,
+            "precio": 200,
+            "__v": 0,
+            "tags": [
+            "work"
+            ]
+        },
+        {
+            "_id": "59c127bb10fcc45873b3dace",
+            "nombre": "Oneplus 5",
+            "foto": "https://img.difoosion.com/wp-content/blogs.dir/28/files/2017/06/OnePlus-5-1-1-700x500.jpg",
+            "venta": false,
+            "precio": 350,
+            "__v": 0,
+            "tags": [
+            "mobile"
+            ]
+        },
+        {
+            "_id": "59b2974196983110d25741d3",
+            "nombre": "Iphone X",
+            "venta": false,
+            "precio": 500,
+            "foto": "https://www.tuexperto.com/wp-content/uploads/2017/09/iphone-x-01.jpg",
+            "__v": 0,
+            "tags": [
+            "lifestyle, mobile"
+            ]
+        },
+        {
+            "_id": "59bbb554e690f604b3547f4a",
+            "nombre": "Macbook Pro",
+            "foto": "https://store.storeimages.cdn-apple.com/4974/as-images.apple.com/is/image/AppleInc/aos/published/images/m/bp/mbp15touch/gray/mbp15touch-gray-select-201610?wid=452&hei=420&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1496611018929",
+            "venta": true,
+            "precio": 500,
+            "__v": 0,
+            "tags": [
+            "work"
+            ]
+        },
+        {
+            "_id": "59bc1f882acbce18df2a7fb0",
+            "nombre": "Imac",
+            "foto": "https://cdn3.volusion.com/dghp7.mx4ek/v/vspfiles/photos/IM-215-SL-2.jpg?1461335703",
+            "venta": false,
+            "precio": 500,
+            "__v": 0,
+            "tags": [
+            "work"
+            ]
+        },
+        {
+            "_id": "59c1294aeb16a95932e41b7a",
+            "nombre": "Disfraz Trooper",
+            "foto": "http://www.skullgarrison.com/foro/index.php?attachments/sw-imp-trooper-3-jpg.6233/",
+            "venta": false,
+            "precio": 600,
+            "__v": 0,
+            "tags": [
+            "lifestyle"
+            ]
+        },
+        {
+            "_id": "59b66a01294d0f2dd0491d1c",
+            "nombre": "Iphone 8",
+            "venta": true,
+            "precio": 700,
+            "foto": "https://cdn5.ipadizate.es/2017/01/iPhone-8-pantalla-640x360.jpg",
+            "__v": 0,
+            "tags": [
+            "lifestyle, mobile"
+            ]
+        }
+    ]
+}

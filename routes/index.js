@@ -1,9 +1,21 @@
-var express = require('express');
-var router = express.Router();
+"use strict";
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+const express = require('express');
+const router = express.Router();
+
+const mongoose = require('mongoose');
+const Anuncio = mongoose.model('Anuncio');
+
+//Ruta donde mostrara los anuncios
+router.get('/', (req, res, next) => {
+    Anuncio.list( (err, list) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        // res.json({ list: list });
+        res.render('index', {list: list});
+    });
 });
 
 module.exports = router;
