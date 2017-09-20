@@ -8,6 +8,7 @@ const Anuncio = mongoose.model('Anuncio');
 //Listar anuncions
 
 router.get('/', (req, res, next) => {
+    
     //filtro anuncion por nombre
     const nombre = req.query.nombre;
     const venta = req.query.venta;
@@ -16,9 +17,10 @@ router.get('/', (req, res, next) => {
     const limit = parseInt(req.query.limit) || null;
     const skip = parseInt(req.query.skip) || null;
     let filtro = {};
+
     
     if(nombre) {
-        filtro.nombre = nombre;
+        filtro.nombre = new RegExp('^' + req.query.nombre, "i");
     }
     if(venta) {
         filtro.venta = venta;
@@ -26,25 +28,26 @@ router.get('/', (req, res, next) => {
 
     if (typeof req.query.precio !== 'undefined' && req.query.precio !== '-') {
         if (req.query.precio.indexOf('-') !== -1) {
-          filtro.precio = {};
-          let rango = req.query.precio.split('-');
-          if (rango[0] !== '') {
-            filtro.precio.$gte = rango[0];
-          }
+            filtro.precio = {};
+            let rango = req.query.precio.split('-');
+            if (rango[0] !== '') {
+                filtro.precio.$gte = rango[0];
+            }
     
-          if (rango[1] !== '') {
-            filtro.precio.$lte = rango[1];
-          }
-        } else {
-          filtro.precio = req.query.precio;
-        }
-      }
+            if (rango[1] !== '') {
+                filtro.precio.$lte = rango[1];
+            }
 
-    if(tags) {
-        filtro.tags = tags;
+        } else {
+            filtro.precio = req.query.precio;
+        }
     }
 
-    
+    if(tags) {   
+        filtro.tags = new RegExp('^' + req.query.tags, "i");
+    }
+
+ 
     //muestro los anuncios
     Anuncio.list(filtro, limit, skip, (err, list) => {
         if (err) {

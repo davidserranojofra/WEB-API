@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "installDB": "node ./lib/install_db.js"
+    "installDB": "node ./lib/install_db.js",
+    "arrancaDB": "./../mongodbWebApi/bin/mongod --dbpath ./../mongodbWebApi/data/db --directoryperdb"
   },
   "dependencies": {
     "async": "^2.5.0",

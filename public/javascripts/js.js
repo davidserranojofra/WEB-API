@@ -55,6 +55,8 @@ $('#filtra-resultados').on('click', function(event) {
     let ventaChekeado;
     const precioMin = document.getElementById("minimo");
     const precioMax = document.getElementById("maximo");
+    const saltar = document.getElementById("saltar");
+    const mostrar = document.getElementById("mostrar");
 
     //Error de comparacion si minimo es mas grande que maximo
     if(precioMax.value !== "") {
@@ -122,6 +124,24 @@ $('#filtra-resultados').on('click', function(event) {
             } else {
                 ruta += '&precio=0-' + precioMax.value;
             }
+        }
+    }
+
+    if (saltar.value !== "") {
+        if(primerCampo === true) {
+            ruta += '?skip=' + saltar.value;
+            primerCampo = false;
+        } else {
+            ruta += '&skip=' + saltar.value;
+        }
+    }
+
+    if (mostrar.value !== "") {
+        if(primerCampo === true) {
+            ruta += '?limit=' + mostrar.value;
+            primerCampo = false;
+        } else {
+            ruta += '&limit=' + mostrar.value;
         }
     }
 
