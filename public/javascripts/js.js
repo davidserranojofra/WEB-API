@@ -188,11 +188,9 @@ function pedirAjax(url) {
 
 
 $('#insertar').on('click', function(event) {
-
-    let nombreA = $('#nombre');
     
     let nuevoAnuncio = {
-        nombre: nombreA.val(),
+        nombre: $('#nombre').val(),
         foto: $('#foto').val(),
         tags: $('input:checkbox[name=insert-tags]:checked').val(),
         venta: $('input:radio[name=insert-venta]:checked').val(),
@@ -204,22 +202,27 @@ $('#insertar').on('click', function(event) {
         ventaOBusqueda = 'Se busca';
     }
     
+
     $.ajax({
         type: 'POST',
         url: '/apiv1/anuncios',
         data: nuevoAnuncio,
         success: function(nuevoAnuncio) {
+            console.log(nuevoAnuncio);
+            console.log(nuevoAnuncio.anuncio);
+            let anuncioPost = nuevoAnuncio.anuncio;
+            console.log(anuncioPost.nombre)
             $anuncios.append(`
                 <div class="container">
                     <article class="articulo">
                         <div class="informacion">
                             <h2>${ventaOBusqueda}</h2>
-                            <p><b>Nombre:</b> ${nuevoAnuncio.nombre}</p>
-                            <p><b>Precio:</b> ${nuevoAnuncio.precio} € </p>
-                            <p><b>Tags:</b> ${nuevoAnuncio.tags}</p>   
+                            <p><b>Nombre:</b> ${anuncioPost.nombre}</p>
+                            <p><b>Precio:</b> ${anuncioPost.precio} € </p>
+                            <p><b>Tags:</b> ${anuncioPost.tags}</p>   
                         </div>
                         <div class="imagen">
-                            <img src="${nuevoAnuncio.foto}" alt="${nuevoAnuncio.nombre}">
+                            <img src="${anuncioPost.foto}" alt="${anuncioPost.nombre}">
                         </div>
                     </article>
                 </div>

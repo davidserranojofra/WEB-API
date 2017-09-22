@@ -8,6 +8,7 @@ const Anuncio = mongoose.model('Anuncio');
 
 //Ruta donde mostrara los anuncios
 router.get('/', (req, res, next) => {
+
     Anuncio.list( (err, list) => {
         if (err) {
             next(err);

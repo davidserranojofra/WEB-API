@@ -9,7 +9,7 @@ const Anuncio = mongoose.model('Anuncio');
 
 router.get('/', (req, res, next) => {
     
-    //filtro anuncion por nombre
+    //filtrar anuncios
     const nombre = req.query.nombre;
     const venta = req.query.venta;
     const precio = req.query.precio;
@@ -22,6 +22,7 @@ router.get('/', (req, res, next) => {
     if(nombre) {
         filtro.nombre = new RegExp('^' + req.query.nombre, "i");
     }
+    
     if(venta) {
         filtro.venta = venta;
     }
@@ -43,11 +44,14 @@ router.get('/', (req, res, next) => {
         }
     }
 
-    if(tags) {   
-        filtro.tags = new RegExp('^' + req.query.tags, "i");
+    if(tags) {  
+        // filtro.tags = new RegExp('^' + req.query.tags, "i");
+
+        Anuncio.forEach(function(tags) {
+            console.log(tags);
+            });
     }
 
- 
     //muestro los anuncios
     Anuncio.list(filtro, limit, skip, (err, list) => {
         if (err) {
@@ -57,10 +61,6 @@ router.get('/', (req, res, next) => {
         }
         res.json({ ok: true, list: list });
     });
-
-
-
-
 });
 
 //Crear anuncio
@@ -87,7 +87,6 @@ router.put('/:id', (req, res, next) => {
         res.json({ ok: true, anuncio: anuncioActualizado });
     });
 });
-
 
 //Borrar anuncio
 router.delete('/:id', (req, res, next) => {

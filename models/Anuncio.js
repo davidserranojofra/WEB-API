@@ -29,8 +29,7 @@ anuncioSchema.statics.list = (filtro, limit, skip, callback) => {
     const query = Anuncio.find(filtro);
     query.sort({precio: 1});
     query.limit(limit);
-    query.skip(skip);// (10)de 10 en 10
-
+    query.skip(skip);
     query.exec(callback);
 }
 
