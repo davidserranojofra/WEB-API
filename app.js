@@ -4,10 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const { query, validationResult } = require('express-validator/check');
-//const i18n = require('./lib/i18n');
 const i18n = require("i18n");
-
 
 i18n.configure({
     locales:['en', 'es'],
@@ -26,7 +23,6 @@ require('./models/Anuncio');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-// app.use(i18n);
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -61,7 +57,7 @@ app.use(function(err, req, res, next) {
       : `Not valid - ${errInfo.param} ${errInfo.msg}`;
   }
 
-  res.status(err.status || 500);
+  res.status(err.status || __(500));
   //si es petición al api respondo json
   if (isAPI(req)) {
     res.json({ok: false, error: err.message});

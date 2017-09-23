@@ -1,9 +1,4 @@
 {
-	"find_no_one": "No se ha encontrado ningún registro con esa ID",
-	"not_found": "Página no encontrada",
-	"list_error": "Error mostrando lista",
-	"post_error": "Error al guardar el artículo.",
-	"error_find_One_And_Update": "Error al actualizar el artículo.",
-	"delete": "Error al borrar el artículo.",
-	"Not Found": "Not Found"
+	"Not Found": "Pagina no encontrada!",
+	"500" : "El servidor a explotado" 
 }

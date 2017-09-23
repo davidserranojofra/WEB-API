@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Anuncio = mongoose.model('Anuncio');
-const { check, validationResult } = require('express-validator/check');
 
 
 //Listar anuncions
@@ -19,10 +18,6 @@ router.get('/', (req, res, next) => {
     const skip = parseInt(req.query.skip) || null;
     let filtro = {};
 
-    const lang = req.query.lang;
-
-
-    console.log(lang);
     
     if(nombre) {
         filtro.nombre = new RegExp('^' + req.query.nombre, "i");
@@ -104,8 +99,5 @@ router.delete('/:id', (req, res, next) => {
         res.json({ ok: true });
     });
 });
-
-
-
 
 module.exports = router;

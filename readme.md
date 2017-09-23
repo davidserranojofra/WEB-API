@@ -1,12 +1,12 @@
-#WebAPI NodePOP
+# WebAPI NodePOP
 
-###Requisitos previos
+### Requisitos previos
 + Se requiere tener instalado [***Node.js***](https://nodejs.org/es/) en la versión 8.4 o posterior
 + Una terminal.
 + Opcional instalar [***Nodemon***](https://github.com/remy/nodemon)
 
 
-###Instalación:
+### Instalación:
 1. Clonar el repo
 2. Entrar dentro de la carpeta ***WEB-API*** a través de la terminal.
 3. Ejecutar ***npm install*** para instalar todas las dependencias del proyecto.
@@ -21,9 +21,9 @@ Con esto ya estaría funcionando, si ademas queremos cargar el anuncios.json par
 
 
 
-###Uso del API
+### Uso del API
 
-####Método GET
+#### Método GET
 
 Acceder al API --> **localhost:3000/apiv1/anuncios**
 
@@ -31,7 +31,7 @@ En esta ruta devolverá todos los anuncios existentes ordenador por precio de me
 
 Las búsquedas se realizarán mediante el método GET y a traves de queryString ej: **localhost:3000/apiv1/anuncios?nombre=bici&venta=true**
 
-####Filtros implementados:
+#### Filtros implementados:
 
 Nombre --> ?nombre=
 Tags ----> ?tags=
@@ -41,7 +41,7 @@ Mostrar -> ?mostrar=        (mostrara solo x anuncios)
 Venta ---> ?venta=          (***true*** = mostrar anuncios "En venta", ***false*** = mostrara los anuncios "Se busca")
 
 
-####Método POST
+#### Método POST
 
 Se podrán implementar inserciones a la base de datos a través de un envío POST url: **localhost:3000/apiv1/anuncios** con los siguientes campos:
 
@@ -54,11 +54,11 @@ Se podrán implementar inserciones a la base de datos a través de un envío POS
 }
 
 
-####Método UPDATE
+#### Método UPDATE
 
 Se podrán implementar modificaciones a la base de datos a través de un envío PUT url: **localhost:3000/apiv1/anuncios/id** pasando solo los valores a modificar y su id en la url.
 
 
-####Método DELETE
+#### Método DELETE
 
 Se podrá hacer borrado de los artículos a través del método DELETE a la url: **localhost:3000/apiv1/anuncios/id** pasándole en la url la id a borrar.

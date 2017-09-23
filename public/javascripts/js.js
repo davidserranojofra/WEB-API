@@ -1,5 +1,3 @@
-
-
 const $anuncios = $('#anuncios');
 let ruta = '/apiv1/anuncios'
 let ventaOBusqueda;
@@ -57,7 +55,6 @@ $('#filtra-resultados').on('click', function(event) {
     const precioMax = document.getElementById("maximo");
     const saltar = document.getElementById("saltar");
     const mostrar = document.getElementById("mostrar");
-    const espanyol = document.getElementById("es");
 
     //Error de comparacion si minimo es mas grande que maximo
     if(precioMax.value !== "") {
@@ -145,24 +142,6 @@ $('#filtra-resultados').on('click', function(event) {
             ruta += '&limit=' + mostrar.value;
         }
     }
-
-    if (espanyol.checked) {
-        if(primerCampo === true) {
-            ruta += '?lang=true';
-            primerCampo = false;
-        } else {
-            ruta += '&lang=true';
-        }
-    } else {
-        if(primerCampo === true) {
-            ruta += '?lang=false';
-            primerCampo = false;
-        } else {
-            ruta += '&lang=false';
-        }
-    }
-
-    console.log(ruta);
 
     pedirAjax(ruta);
 
@@ -254,7 +233,6 @@ $('#insertar').on('click', function(event) {
             `)
         },
         error: function(err) {
-            //const errorNombre = err.responseJSON.error.errors.nombre.msg;
             console.log(err);
         }                    
     });
