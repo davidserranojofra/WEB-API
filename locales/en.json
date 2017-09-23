@@ -1,0 +1,9 @@
+{
+	"find_no_one": " iiiiiiiNo se ha encontrado ningún registro con esa ID",
+	"not_found": " iiiiiiiPágina no encontrada",
+	"list_error": "iiiiiiError mostrando lista",
+	"post_error": "iiiiiiError al guardar el artículo.",
+	"error_find_One_And_Update": "iiiiiiError al actualizar el artículo.",
+	"delete": "iiiiiiError al borrar el artículo.",
+	"Not Found": "iiiiiiNot Found"
+}

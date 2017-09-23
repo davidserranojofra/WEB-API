@@ -4,11 +4,12 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Anuncio = mongoose.model('Anuncio');
+const { check, validationResult } = require('express-validator/check');
+
 
 //Listar anuncions
 
 router.get('/', (req, res, next) => {
-    
     //filtrar anuncios
     const nombre = req.query.nombre;
     const venta = req.query.venta;
@@ -18,6 +19,10 @@ router.get('/', (req, res, next) => {
     const skip = parseInt(req.query.skip) || null;
     let filtro = {};
 
+    const lang = req.query.lang;
+
+
+    console.log(lang);
     
     if(nombre) {
         filtro.nombre = new RegExp('^' + req.query.nombre, "i");
@@ -45,11 +50,7 @@ router.get('/', (req, res, next) => {
     }
 
     if(tags) {  
-        // filtro.tags = new RegExp('^' + req.query.tags, "i");
-
-        Anuncio.forEach(function(tags) {
-            console.log(tags);
-            });
+         filtro.tags = {$in: [tags]};
     }
 
     //muestro los anuncios
@@ -65,7 +66,9 @@ router.get('/', (req, res, next) => {
 
 //Crear anuncio
 router.post('/', (req, res, next) => {
+
     const anuncio = new Anuncio(req.body);
+    console.log(req.body);
     
     anuncio.save((err, anuncioGuardado) => {
         if(err) {
@@ -91,14 +94,18 @@ router.put('/:id', (req, res, next) => {
 //Borrar anuncio
 router.delete('/:id', (req, res, next) => {
     const id = req.params.id;
+
     Anuncio.remove({_id: id}, (err) => {
         if(err) {
+            err.message = customError.errorMessage('findNOone');
             next(err);
             return;
         }
         res.json({ ok: true });
     });
 });
+
+
 
 
 module.exports = router;

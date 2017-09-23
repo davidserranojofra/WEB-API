@@ -4,9 +4,25 @@
     <form class="filtrado-anuncio" novalidate>
         <h4>Utiliza los filtros que necesites para encontrar tu producto.</h4>
         <div class="cajas">
+            <p>Idioma</p>
+            <input type="radio" id="es" name="es" checked><label for="es"> Español</label>
+            <input type="radio" id="en" name="es"><label for="en"> Inglés</label>
+        </div>
+        <div class="cajas">
             <label for="search">Nombre:</label>
             <input type="search" id="search" name="nombre" class="search">
         </div>
+        <!--
+        <div class="cajas">
+            <p>Selecciona categorias</p>
+            <br>
+            <input type="checkbox" name="tags"  value="work"><label for="categoria"> Work</label>   
+            <input type="checkbox" name="tags"  value="lifestyle"><label for="categoria"> Lifestyle</label> 
+            <br> 
+            <input type="checkbox" name="tags"  value="motor"><label for="categoria"> Motor </label> 
+            <input type="checkbox" name="tags"  value="mobile"><label for="categoria"> Mobile </label> 
+        </div>
+        -->
         <div class="cajas">
             <label for="tags">Tags</label>
             <select name="tags" id="tags">
@@ -70,7 +86,7 @@
         </div>
         <div class="cajas">
             <label for="inventa">Venta</label>
-            <input id="inventa" type="radio" name="insert-venta" value="true">
+            <input id="inventa" type="radio" name="insert-venta" value="true" checked>
             <label for="inbusqueda">Búsqueda</label>
             <input id="inbusqueda" type="radio" name="insert-venta" value="false"> 
         </div>

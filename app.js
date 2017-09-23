@@ -4,6 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const { query, validationResult } = require('express-validator/check');
+//const i18n = require('./lib/i18n');
+const i18n = require("i18n");
+
+
+i18n.configure({
+    locales:['en', 'es'],
+    defaultLocale:  'es',
+    directory: __dirname + '/locales',
+    queryParameter: 'lang',
+    autoReload: true,
+    syncFiles: true,
+    register: global,
+});
 
 var app = express();
 
@@ -12,6 +26,7 @@ require('./models/Anuncio');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+// app.use(i18n);
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -22,14 +37,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/',               require('./routes/index'));
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios.js'));
+// app.use('/apiv1/tags',     require('./routes/apiv1/tags.js'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error(__('Not Found'));
+    err.status = 404;
+    next(err);
 });
 
 // error handler

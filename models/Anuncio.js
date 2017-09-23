@@ -23,7 +23,6 @@ const anuncioSchema = mongoose.Schema({
     } 
 });
 
-
 //metodo estatico
 anuncioSchema.statics.list = (filtro, limit, skip, callback) => {
     const query = Anuncio.find(filtro);
@@ -35,3 +34,12 @@ anuncioSchema.statics.list = (filtro, limit, skip, callback) => {
 
 //creo modelo
 const Anuncio = mongoose.model('Anuncio', anuncioSchema);
+
+// //metodo estatico
+// anuncioSchema.statics.tag = ( callback) => {
+//     const query = Anuncio.find();
+//     query.exec(callback);
+// }
+
+// //creo modelo
+// const tag = mongoose.model('Anuncio', anuncioSchema);

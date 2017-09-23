@@ -57,6 +57,7 @@ $('#filtra-resultados').on('click', function(event) {
     const precioMax = document.getElementById("maximo");
     const saltar = document.getElementById("saltar");
     const mostrar = document.getElementById("mostrar");
+    const espanyol = document.getElementById("es");
 
     //Error de comparacion si minimo es mas grande que maximo
     if(precioMax.value !== "") {
@@ -145,6 +146,24 @@ $('#filtra-resultados').on('click', function(event) {
         }
     }
 
+    if (espanyol.checked) {
+        if(primerCampo === true) {
+            ruta += '?lang=true';
+            primerCampo = false;
+        } else {
+            ruta += '&lang=true';
+        }
+    } else {
+        if(primerCampo === true) {
+            ruta += '?lang=false';
+            primerCampo = false;
+        } else {
+            ruta += '&lang=false';
+        }
+    }
+
+    console.log(ruta);
+
     pedirAjax(ruta);
 
     event.preventDefault();
@@ -186,32 +205,38 @@ function pedirAjax(url) {
     ruta = '/apiv1/anuncios';
 }
 
-
 $('#insertar').on('click', function(event) {
     
+    let mostrarTags = "";
+    let tagsChekeados = [];
+    $('input:checkbox[name=insert-tags]:checked').each(function(i){
+        tagsChekeados[i] = $(this).val();
+        mostrarTags += tagsChekeados[i] + ' ';
+    });
+
+    console.log(tagsChekeados);
     let nuevoAnuncio = {
         nombre: $('#nombre').val(),
         foto: $('#foto').val(),
-        tags: $('input:checkbox[name=insert-tags]:checked').val(),
+        tags: tagsChekeados,
         venta: $('input:radio[name=insert-venta]:checked').val(),
         precio: $('#insert-precio').val()
     };
+    console.log(nuevoAnuncio);
+
     if(nuevoAnuncio.venta === true) {
         ventaOBusqueda = 'En venta';
     } else {
         ventaOBusqueda = 'Se busca';
     }
     
-
     $.ajax({
         type: 'POST',
         url: '/apiv1/anuncios',
         data: nuevoAnuncio,
         success: function(nuevoAnuncio) {
-            console.log(nuevoAnuncio);
             console.log(nuevoAnuncio.anuncio);
             let anuncioPost = nuevoAnuncio.anuncio;
-            console.log(anuncioPost.nombre)
             $anuncios.append(`
                 <div class="container">
                     <article class="articulo">
@@ -219,7 +244,7 @@ $('#insertar').on('click', function(event) {
                             <h2>${ventaOBusqueda}</h2>
                             <p><b>Nombre:</b> ${anuncioPost.nombre}</p>
                             <p><b>Precio:</b> ${anuncioPost.precio} € </p>
-                            <p><b>Tags:</b> ${anuncioPost.tags}</p>   
+                            <p><b>Tags:</b> ${mostrarTags}</p>   
                         </div>
                         <div class="imagen">
                             <img src="${anuncioPost.foto}" alt="${anuncioPost.nombre}">
@@ -228,13 +253,11 @@ $('#insertar').on('click', function(event) {
                 </div>
             `)
         },
-        error: function() {
-            alert('Error al guardar el anuncio');
+        error: function(err) {
+            //const errorNombre = err.responseJSON.error.errors.nombre.msg;
+            console.log(err);
         }                    
     });
     
     event.preventDefault();
 });
-
-
- 
