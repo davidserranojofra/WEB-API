@@ -194,6 +194,7 @@ $('#insertar').on('click', function(event) {
     });
 
     console.log(tagsChekeados);
+
     let nuevoAnuncio = {
         nombre: $('#nombre').val(),
         foto: $('#foto').val(),
@@ -214,7 +215,7 @@ $('#insertar').on('click', function(event) {
         url: '/apiv1/anuncios',
         data: nuevoAnuncio,
         success: function(nuevoAnuncio) {
-            console.log(nuevoAnuncio.anuncio);
+            console.log(nuevoAnuncio);
             let anuncioPost = nuevoAnuncio.anuncio;
             $anuncios.append(`
                 <div class="container">
