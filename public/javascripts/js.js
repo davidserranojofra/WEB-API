@@ -1,3 +1,5 @@
+"use strict";
+
 const $anuncios = $('#anuncios');
 let ruta = '/apiv1/anuncios'
 let ventaOBusqueda;
@@ -34,8 +36,9 @@ function cargaFullAnuncios() {
                                             </div>
                                         </article>
                                     </div>
-                                `);
-             }
+                                    
+                                `);    
+            }
         },
         error: function() {
             alert('Error al cargar anuncios');

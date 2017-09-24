@@ -5,9 +5,11 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Anuncio = mongoose.model('Anuncio');
 
-router.get('/', (req, res, next) => {
-    res.render('index', {ltags: Anuncio.losTags()});
+
+//muestro los tags
+router.get('/', (req, res) => {
+    res.json({ ok: true, losTags: Anuncio.losTags() });
 });
-    
+
 
 module.exports = router;

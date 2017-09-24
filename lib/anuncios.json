@@ -35,7 +35,7 @@
         },
         {
             "_id": "59b296de96983110d25741d2",
-            "nombre": "bicicleta",
+            "nombre": "Bicicleta",
             "venta": true,
             "precio": 48,
             "foto": "http://bicicletaselectricas365.com/wp-content/gallery/bultaco-brinco/002.jpg",
@@ -57,13 +57,15 @@
         },
         {
             "_id": "59c123b0bf0ad1565db41fec",
-            "nombre": "bicicleta",
-            "foto": "http://www.linternasprofesionales.com/WebRoot/StoreES2/Shops/ec7419/555D/F441/2CD5/90A5/6E33/0A02/102F/D8E0/1-1_TM26_OI_m_m.png",
+            "nombre": "Moto",
+            "foto": "http://www.dibujoswiki.com/Uploads/dibujoswiki.com/ImagenesGrandes/moto-carretera-6.jpg",
             "venta": false,
-            "precio": 200,
+            "precio": 2000,
             "__v": 0,
             "tags": [
-            "work"
+            "work",
+            "lifestyle",
+            "motor"
             ]
         },
         {
@@ -74,7 +76,8 @@
             "precio": 350,
             "__v": 0,
             "tags": [
-            "mobile"
+            "mobile",
+            "lifestyle"
             ]
         },
         {
@@ -93,7 +96,7 @@
             "nombre": "Macbook Pro",
             "foto": "https://store.storeimages.cdn-apple.com/4974/as-images.apple.com/is/image/AppleInc/aos/published/images/m/bp/mbp15touch/gray/mbp15touch-gray-select-201610?wid=452&hei=420&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1496611018929",
             "venta": true,
-            "precio": 500,
+            "precio": 800,
             "__v": 0,
             "tags": [
             "work"
@@ -104,7 +107,7 @@
             "nombre": "Imac",
             "foto": "https://cdn3.volusion.com/dghp7.mx4ek/v/vspfiles/photos/IM-215-SL-2.jpg?1461335703",
             "venta": false,
-            "precio": 500,
+            "precio": 550,
             "__v": 0,
             "tags": [
             "work"

@@ -7,7 +7,6 @@ const Anuncio = mongoose.model('Anuncio');
 
 
 //Listar anuncions
-
 router.get('/', (req, res, next) => {
     //filtrar anuncios
     const nombre = req.query.nombre;
@@ -18,15 +17,15 @@ router.get('/', (req, res, next) => {
     const skip = parseInt(req.query.skip) || null;
     let filtro = {};
 
-    
+    //filtro por nombre
     if(nombre) {
         filtro.nombre = new RegExp('^' + req.query.nombre, "i");
     }
-    
+    //filtro por venta o busqueda
     if(venta) {
         filtro.venta = venta;
     }
-
+    //filtro por precio
     if (typeof req.query.precio !== 'undefined' && req.query.precio !== '-') {
         if (req.query.precio.indexOf('-') !== -1) {
             filtro.precio = {};
@@ -43,7 +42,7 @@ router.get('/', (req, res, next) => {
             filtro.precio = req.query.precio;
         }
     }
-
+    //filtro por tag
     if(tags) {  
          filtro.tags = {$in: [tags]};
     }
