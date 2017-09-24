@@ -50,7 +50,7 @@ Las búsquedas se realizarán mediante el método GET y a traves de queryString 
 | Mostrar       | ?mostrar=5     | Mostrara solo x anuncios                                                                   |
 | Venta         | ?venta=true    | ***true*** = mostrara anuncios "En venta", ***false*** = mostrara los anuncios "Se busca"  |
 
-Si se aplica mas de un filtro a la vez, se escribira seguido el primero con ***?*** y el resto con ***&***, un ejemplo seria **localhost:3000/apiv1/anuncios?nombre=bici&venta=true&saltar=2**
+Si se aplica mas de un filtro a la vez, se escribira seguido el primero con *** ? *** y el resto con *** & ***, un ejemplo seria **localhost:3000/apiv1/anuncios?nombre=bici&venta=true&saltar=2**
 
 
 #### Método POST
