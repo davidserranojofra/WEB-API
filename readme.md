@@ -12,7 +12,7 @@
 3. Ejecutar ***npm install*** para instalar todas las dependencias del proyecto.
 4. Descargar [***mongoDb***](https://www.mongodb.com/download-center?filter=enterprise?jmp=nav#enterprise)
 5. Crear una carpeta donde queramos guardar las bases de datos de mongo, por ejemplo dentro de la carpeta ***mongoDb*** crear una carpeta ***data*** y dentro otra carpeta ***db***
-6. En el package.json modificar el ***arrancaDB*** la primera ruta, pertenecería a la carpeta mongoDb/bin/mongod (ej)***./../../mongodb/bin/mongod*** y la segunda ruta pertenecería a las carpetas de donde queremos guardar la base de datos (ej)***./../../mongodb/data/db*** 
+6. En el package.json modificar el ***arrancaDB*** la primera ruta, pertenecería a la carpeta mongoDb/bin/mongod (ej)***\./../../mongodb/bin/mongod*** y la segunda ruta pertenecería a las carpetas de donde queremos guardar la base de datos (ej)***\./../../mongodb/data/db*** 
 7. ejecutar en la carpeta de ***WEB-API*** desde el terminal ***npm run arrancaDB***
 8. Dejamos esa terminal en ejecución y abrimos otra.
 9. Entramos en la carpeta ***WEB-API*** y ejecutamos ***Nodemon*** si lo tenemos instalado o ***npm start*** si no lo tenemos y lo dejamos en ejecución.
@@ -50,7 +50,7 @@ Las búsquedas se realizarán mediante el método GET y a traves de queryString 
 | Mostrar       | ?mostrar=5     | Mostrara solo x anuncios                                                                   |
 | Venta         | ?venta=true    | ***true*** = mostrara anuncios "En venta", ***false*** = mostrara los anuncios "Se busca"  |
 
-Si se aplica mas de un filtro a la vez, se escribira seguido el primero con *** ? *** y el resto con *** & ***, un ejemplo seria **localhost:3000/apiv1/anuncios?nombre=bici&venta=true&saltar=2**
+Si se aplica mas de un filtro a la vez, se escribira seguido el primero con **?** y el resto con **\&**, un ejemplo seria **localhost:3000/apiv1/anuncios?nombre=bici&venta=true&saltar=2**
 
 
 #### Método POST
