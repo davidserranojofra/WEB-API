@@ -36,5 +36,9 @@ anuncioSchema.statics.losTags = () => {
     return ['work', 'lifestyle', 'motor', 'mobile'];
 };
 
+anuncioSchema.methods.redimensionarFoto = async function() {
+    console.log('envio de foto');
+}
+
 //creo modelo
 const Anuncio = mongoose.model('Anuncio', anuncioSchema);

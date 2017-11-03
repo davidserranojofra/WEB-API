@@ -5,9 +5,13 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Anuncio = mongoose.model('Anuncio');
 
+const cote = require('cote');
+const requester = new cote.Requester({ name: 'Resize Image Client' });
+
 
 //Listar anuncions
 router.get('/', (req, res, next) => {
+
     //filtrar anuncios
     const nombre = req.query.nombre;
     const venta = req.query.venta;
@@ -62,8 +66,13 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
 
     const anuncio = new Anuncio(req.body);
-    console.log(req.body);
-    
+
+    requester.send({ 
+        type: 'resizeImg',
+        nombre: req.body.nombre,
+        url: req.body.foto
+     }); 
+
     anuncio.save((err, anuncioGuardado) => {
         if(err) {
             next(err);

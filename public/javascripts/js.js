@@ -3,7 +3,7 @@
 const $anuncios = $('#anuncios');
 let ruta = '/apiv1/anuncios'
 let ventaOBusqueda;
-
+const token = localStorage.getItem('token');
 //cargar todo los anuncios al inicio
 $(function () {
     cargaFullAnuncios();
@@ -13,6 +13,7 @@ function cargaFullAnuncios() {
     $.ajax({
         type: 'GET',
         url: '/apiv1/anuncios',
+        headers: {'x-access-token': token},
         success: function(traeAnuncios) {
             let anuncio = traeAnuncios.list;
              for (let i = 0; i < anuncio.length; i++) {
@@ -41,7 +42,7 @@ function cargaFullAnuncios() {
             }
         },
         error: function() {
-            alert('Error al cargar anuncios');
+            console.log('Error al cargar anuncios');
         }
     });
 }
@@ -156,6 +157,7 @@ function pedirAjax(url) {
     $.ajax({
         type: 'GET',
         url: url,
+        headers: {'x-access-token': token},
         success: function(traeAnuncios) {
             let anuncio = traeAnuncios.list;
              for (let i = 0; i < anuncio.length; i++) {
@@ -196,8 +198,6 @@ $('#insertar').on('click', function(event) {
         mostrarTags += tagsChekeados[i] + ' ';
     });
 
-    console.log(tagsChekeados);
-
     let nuevoAnuncio = {
         nombre: $('#nombre').val(),
         foto: $('#foto').val(),
@@ -205,7 +205,6 @@ $('#insertar').on('click', function(event) {
         venta: $('input:radio[name=insert-venta]:checked').val(),
         precio: $('#insert-precio').val()
     };
-    console.log(nuevoAnuncio);
 
     if(nuevoAnuncio.venta === true) {
         ventaOBusqueda = 'En venta';
@@ -217,8 +216,8 @@ $('#insertar').on('click', function(event) {
         type: 'POST',
         url: '/apiv1/anuncios',
         data: nuevoAnuncio,
+        headers: {'x-access-token': token},
         success: function(nuevoAnuncio) {
-            console.log(nuevoAnuncio);
             let anuncioPost = nuevoAnuncio.anuncio;
             $anuncios.append(`
                 <div class="container">

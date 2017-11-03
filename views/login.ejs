@@ -1,0 +1,35 @@
+<% include head %>
+
+<body>
+<section>
+  <div class="container">
+    
+
+    <form method="POST">
+      <p><%= __('Please login to access application') %>!</p>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputEmail1">
+          <%= __('Email address') %>
+        <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<%= email %>">
+        </label>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputPassword1">
+          Password
+        <input type="password" class="form-control" id="pass" placeholder="1234" name="password">
+        </label>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary" id="login">Submit</button>
+
+    </form>
+  </div>
+
+  </section>
+
+  <script src="javascripts/login.js"></script>
+
+  </body>
+  </html>

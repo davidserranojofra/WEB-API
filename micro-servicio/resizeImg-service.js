@@ -12,7 +12,7 @@ responder.on('resizeImg', function(req, done) {
 
     Jimp.read(url).then(function (image) {
         image.resize(100, 100)
-             .write('./thumbs/' + nombre + '.jpg');
+             .write('../public/images/thumbs/' + nombre + '.jpg');
     }).catch(function (err) {
         console.error(err);
     })

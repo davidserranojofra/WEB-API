@@ -2,9 +2,9 @@
 
 <!-- filtrar anuncio -->   
     <form class="filtrado-anuncio" novalidate>
-        <h4>Utiliza los filtros que necesites para encontrar tu producto.</h4>
+        <h4><%=__('Utiliza los filtros que necesites para encontrar tu producto.')%></h4>
         <div class="cajas">
-            <label for="search">Nombre:</label>
+            <label for="search"><%=__('Nombre:')%></label>
             <input type="search" id="search" name="nombre" class="search">
         </div>
         <div class="cajas">
@@ -19,48 +19,48 @@
         </div>
         <div class="cajas">
             <input id="ven-bus" type="radio" name="venta" value="" checked>
-            <label for="ven-bus">Venta y Búsqueda</label>
+            <label for="ven-bus"><%=__('Venta y Búsqueda')%></label>
             <br>
             <input id="venta" type="radio" name="venta" value="true">
-            <label for="venta">Venta</label>
+            <label for="venta"><%=__('Venta')%></label>
             <br>
             <input id="busqueda" type="radio" name="venta" value="false">
-            <label for="busqueda">Búsqueda</label>
+            <label for="busqueda"><%=__('Búsqueda')%></label>
         </div>
         <div class="cajas">
             <p>Precio:</p>
-            <label for="minimo">Mínimo</label>
+            <label for="minimo"><%=__('Mínimo')%></label>
             <input type="number" id="minimo" name="precio">€
             <br>
-            <label for="máximo">Máximo</label>
+            <label for="máximo"><%=__('Máximo')%></label>
             <input type="number" id="maximo" name="precio">€
         </div>
         <div class="cajas">
-            <p>Paginación:</p>
-            <label for="saltar">Saltar</label>
+            <p><%=__('Paginación:')%></p>
+            <label for="saltar"><%=__('Saltar')%></label>
             <input type="number" id="saltar" name="saltar"> anuncios
             <br>
-            <label for="mostrar">Mostrar</label> 
+            <label for="mostrar"><%=__('Mostrar')%></label> 
             <input type="number" id="mostrar" name="mostrar"> anuncios
         </div>
         
-        <button id="filtra-resultados">Filtrar</button>
+        <button id="filtra-resultados"><%=__('Filtrar')%></button>
     </form>
 
 
 <!-- crear anuncio-->
-    <form class="inserta-anuncio" novalidate>
-        <h4>Inserta un anuncio</h4>
+    <form class="inserta-anuncio" novalidate method="POST" action="/redimensionarfoto">
+        <h4><%=__('Inserta un anuncio')%></h4>
         <div class="cajas">
-            <label for="nombre">Nombre:</label>
+            <label for="nombre"><%=__('Nombre:')%></label>
             <input type="input" id="nombre" name="nombre" class="nombre">
         </div>
         <div class="cajas">
-            <label for="foto">Inserta Url:</label>
+            <label for="foto"><%=__('Inserta Url:')%></label>
             <input type="text" name="foto" id="foto">
         </div>
         <div class="cajas">
-            <p>Selecciona categorias</p>
+            <p><%=__('Selecciona categorias')%></p>
             <br>
             <input type="checkbox" name="insert-tags" id="work"  value="work"><label for="categoria"> Work</label>   
             <input type="checkbox" name="insert-tags" id="lifestyle" value="lifestyle"><label for="categoria"> Lifestyle</label> 
@@ -69,15 +69,15 @@
             <input type="checkbox" name="insert-tags" id="mobile" value="mobile"><label for="categoria"> Mobile </label> 
         </div>
         <div class="cajas">
-            <label for="inventa">Venta</label>
+            <label for="inventa"><%=__('Venta')%></label>
             <input id="inventa" type="radio" name="insert-venta" value="true" checked>
-            <label for="inbusqueda">Búsqueda</label>
+            <label for="inbusqueda"><%=__('Búsqueda')%></label>
             <input id="inbusqueda" type="radio" name="insert-venta" value="false"> 
         </div>
         <div class="cajas">
-            <label for="precio">Precio:</label>
+            <label for="precio"><%=__('Precio:')%></label>
             <input type="input" id="insert-precio"  class="precio">€
         </div>
-        <button id="insertar">Insertar</button>
+        <button id="insertar"><%=__('Insertar')%></button>
     </form>
 </nav>

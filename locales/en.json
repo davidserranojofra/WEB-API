@@ -1,4 +1,24 @@
 {
+	"500": "The server is being exploited",
 	"Not Found": "Not found!",
-	"500" : "The server is being exploited" 
+	"Utiliza los filtros que necesites para encontrar tu producto.": "Use the filters you need to find your product.",
+	"Nombre:": "Name:",
+	"Venta y Búsqueda": "Sale and Search",
+	"Venta": "Sale",
+	"Búsqueda": "Search",
+	"Mínimo": "Minimum",
+	"Saltar": "Skip",
+	"Mostrar": "Show",
+	"Filtrar": "Filter",
+	"Inserta un anuncio": "Insert an ad",
+	"Inserta Url:": "Insert Url:",
+	"Selecciona categorias": "Select categories",
+	"Precio:": "Price:",
+	"Insertar": "Insert",
+	"Máximo": "Maximum",
+	"Paginación:": "Pagination:",
+	"Credenciales inavalidos": "Ivanlid credencials",
+	"no hay token": "No token",
+	"Please login to access application": "Please login to access application",
+	"Email address": "Email address"
 }

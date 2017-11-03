@@ -1,4 +1,25 @@
 {
+	"500": "El servidor a explotado",
 	"Not Found": "Pagina no encontrada!",
-	"500" : "El servidor a explotado" 
+	"Utiliza los filtros que necesites para encontrar tu producto.": "Utiliza los filtros que necesites para encontrar tu producto.",
+	"Nombre:": "Nombre:",
+	"Venta y Búsqueda": "Venta y Búsqueda",
+	"Venta": "Venta",
+	"Búsqueda": "Búsqueda",
+	"Mínimo": "Mínimo",
+	"": "",
+	"Saltar": "Saltar",
+	"Mostrar": "Mostrar",
+	"Filtrar": "Filtrar",
+	"Inserta un anuncio": "Inserta un anuncio",
+	"Inserta Url:": "Inserta Url:",
+	"Selecciona categorias": "Selecciona categorias",
+	"Precio:": "Precio:",
+	"Insertar": "Insertar",
+	"Máximo": "Máximo",
+	"Paginación:": "Paginación:",
+	"Credenciales inavalidos": "Credenciales inavalidos",
+	"no hay token": "no hay token",
+	"Please login to access application": "Please login to access application",
+	"Email address": "Email address"
 }

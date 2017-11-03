@@ -4,17 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const i18n = require("i18n");
+const jwtAuth = require('./lib/jtwAuth');
 
-i18n.configure({
-    locales:['en', 'es'],
-    defaultLocale:  'es',
-    directory: __dirname + '/locales',
-    queryParameter: 'lang',
-    autoReload: true,
-    syncFiles: true,
-    register: global,
-});
+const i18n = require('./lib/i18nSetup')();
+
+require('dotenv').config();
 
 var app = express();
 
@@ -33,11 +27,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(i18n.init);
 
-app.use('/',               require('./routes/index'));
-app.use('/',               require('./routes/tags'));
-app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios.js'));
-app.use('/apiv1/tags', require('./routes/apiv1/tags.js'));
+const loginJWT = require('./routes/loginJWT');
+// //Rutas del controlador
+app.get('/login', loginJWT.index);
+app.post('/login', loginJWT.postLoginJWT);
+
+app.use('/',                        require('./routes/index'));
+app.use('/',                         require('./routes/tags'));
+app.use('/apiv1/anuncios', jwtAuth(),   require('./routes/apiv1/anuncios')); //, jwtAuth()
+app.use('/apiv1/tags',   jwtAuth(),      require('./routes/apiv1/tags')); //, jwtAuth()
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,8 +4,22 @@
 <body>
     <header class="titulo-principal">
         <h1>NodePop</h1>
+        <ul class="menu-idioma">
+            Idioma: 
+                <% getLocales().forEach( lang => {%>
+                <a class="menu-item" href="/lang/<%= lang %>"><%= lang %></a>
+                <% }) %>
+        </ul>
     </header>
+    
+    <br>
+
+    <p>Las miniaturas despues de hacer una insercion se guardan en la ruta del proyecto en.. <b style="color: white">micro-servicio/thums/</b></p>
+
     <main class="principal">
+
+
+        
 
     <% include busquedas_y_inserciones %>
     
