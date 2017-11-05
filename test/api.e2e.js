@@ -5,6 +5,8 @@ const expect = require('chai').expect;
 const Mockgoose = require('mockgoose').Mockgoose;
 const mongoose = require('mongoose');
 const mockgoose = new Mockgoose(mongoose);
+const mongodbFixtures = require('./mongodb.fixtures');
+const jwt = require('jsonwebtoken');
 
 const app = require('../app');
 
@@ -27,6 +29,7 @@ describe('PRUEBA API /anuncios', function() {
       //limpio definiciones de modelos y esquemas
       mongoose.models = {};
       mongoose.modelSchemas = {};
+      await mongodbFixtures.initUsuarios();
     });
 
     //GET

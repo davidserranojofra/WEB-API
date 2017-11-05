@@ -1,3 +1,27 @@
+# WebAPI NodePOP - Actualización para el profesorado o quién quiera probarlo.
+
+### Micro servicio
+
+Para poder usar el micro servicio de re dimensionado de imágenes, se debe ejecutar en un terminal dentro de la carpeta micro-servicio: 
+~~~
+nodemon resizeImg-service.js
+~~~
+(He probado a ponerlo a ponerlo en un script pero por causas que desconozco y falta de tiempo, el script se ejecuta correctamente por que los datos llegan, pero no redimensiona las imagenes.)
+
+La ruta que se guardan las imagenes al hacer los post es: 
+~~~
+public/images/thumbs/
+~~~
+
+
+###Los test e2e
+
+Para poder ejecutar los test en la consola escribir:
+~~~
+npm run e2e.
+~~~
+
+
 # WebAPI NodePOP
 
 ### Requisitos previos
