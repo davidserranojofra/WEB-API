@@ -15,6 +15,7 @@ class LoginJWT {
   async postLoginJWT(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
+    let token;
 
     // hacemos un hash de la password
     const hashedPassword = Usuario.hashPassword(password);
@@ -38,6 +39,7 @@ class LoginJWT {
         return next(err);
       }
     //  respondemos con un JWT
+    token = token;
     res.send(token);
     //res.render('index'); 
     });

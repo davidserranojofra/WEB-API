@@ -12,5 +12,6 @@ module.exports.initUsuarios = async function() {
             email: 'user@example.com',
             password: Usuario.hashPassword('1234') 
         }
+        
     ]);
 }

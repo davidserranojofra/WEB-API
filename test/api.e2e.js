@@ -1,12 +1,9 @@
 const request = require('supertest');
-const expect = require('chai').expect;
-// const fixtures = require('./fixtures');
 //Inicializo mockgoose (base de datos falsa)
 const Mockgoose = require('mockgoose').Mockgoose;
 const mongoose = require('mongoose');
 const mockgoose = new Mockgoose(mongoose);
-const mongodbFixtures = require('./mongodb.fixtures');
-const jwt = require('jsonwebtoken');
+const mongodbFixtures = require('./mongodb.fixtures.js');
 
 const app = require('../app');
 
@@ -18,9 +15,10 @@ anuncio = {
   "tags": ["lifestyle"]
 }
 
-
 describe('PRUEBA API /anuncios', function() {
 
+    let agent;
+    let token;
     before(async function() {
       await mockgoose.prepareStorage();
       await mongoose.connect('mongodb://urlfalsa.com/testDB', {
@@ -30,11 +28,22 @@ describe('PRUEBA API /anuncios', function() {
       mongoose.models = {};
       mongoose.modelSchemas = {};
       await mongodbFixtures.initUsuarios();
+      const agent = request.agent(app)
     });
+
+    it('deberia retornar un JWT', async function () {
+      const response = await agent
+        .post('/login')
+        .send({ email: 'user@example.com', password: '1234' })
+        .expect(200)
+      // expect(response.body.ok).to.equal(true)
+      // expect(response.body.token).to.be.not.undefined
+      token = response.body.token
+    })
 
     //GET
     it('deberia GET responder con json', function(done) {
-      request(app)
+      agent
         .get('/apiv1/anuncios')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
@@ -50,7 +59,7 @@ describe('PRUEBA API /anuncios', function() {
     });
 
     it('deberia GET buscar por una query', function(done) {
-      request(app)
+      agent
         .get('/apiv1/anuncios?nombre=bicicleta')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
@@ -67,7 +76,7 @@ describe('PRUEBA API /anuncios', function() {
 
     //POST
     it('deberia añadir un contacto por POST', function(done) {
-      request(app)
+      agent
         .post('/apiv1/anuncios')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
@@ -85,7 +94,7 @@ describe('PRUEBA API /anuncios', function() {
 
     //PUT
     it('deberia Actualizar un contacto por PUT', function(done) {
-        request(app)
+        agent
         .put('/apiv1/anuncios/59c126736679d357e9a4413a')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
@@ -99,7 +108,7 @@ describe('PRUEBA API /anuncios', function() {
 
     //DELETE
     it('deberia Borrar un contacto', function(done) {
-      request(app)
+      agent
       .delete('/apiv1/anuncios/59c126736679d357e9a4413a')
       .expect(200)
       .end(function(err, res) {
@@ -109,9 +118,9 @@ describe('PRUEBA API /anuncios', function() {
     });
 
     //DELETE
-    it('deberia Fallar por que intenta borrar un contacto inexistente', function(done) {
+    it('deberia Fallar por que no tiene el token', function(done) {
       request(app)
-      .delete('/apiv1/anuncios/5numeroNoExiste')
+      .delete('/apiv1/anuncios/59c126736679d357e9a4413a')
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
